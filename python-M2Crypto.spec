@@ -1,3 +1,5 @@
+%include	/usr/lib/rpm/macros.python
+
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
@@ -8,13 +10,11 @@ Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
 URL:		http://www.pobox.org.sg/home/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
-BuildRequires:	python-devel >= 1.5.2
+BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	openssl-devel >= 0.9.6
 BuildRequires:	swig
 BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%include /usr/lib/rpm/macros.python
 
 %description
 M2Crypto makes accessible to the Python programmer the following:
