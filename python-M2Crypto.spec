@@ -4,10 +4,12 @@ Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.13
-Release:	1
+Release:	2
 License:	BSD-like
 Source0:	http://sandbox.rulemaker.net/ngps/Dist/m2crypto-%{version}.zip
 # Source0-md5:	be2790a34349ab452dddbcfe4c95606a
+#		http://sandbox.rulemaker.net/ngps/Dist/0.13p1.patch
+Patch0:		%{name}-0.13p1.patch
 URL:		http://sandbox.rulemaker.net/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
@@ -34,6 +36,7 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 
 %prep
 %setup -q -n m2crypto-%{version}
+%patch0 -p0
 
 %build
 python setup.py build 
