@@ -3,7 +3,7 @@ Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.06
 Release:	2
-License:	BSD-style
+License:	BSD-like
 Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
 URL:		http://www.pobox.org.sg/home/ngps/m2/
 Group:		Development/Languages/Python
@@ -22,7 +22,7 @@ M2Crypto makes accessible to the Python programmer the following:
 - SSL functionality to implement clients and servers.
 - S/MIME v2.
 
-M2Crypto is released under a very liberal BSD-style licence. See
+M2Crypto is released under a very liberal BSD-like licence. See
 LICENCE for details.
 
 %description -l pl
