@@ -10,7 +10,7 @@ Group:		Development/Languages/Python
 %requires_eq	python
 BuildRequires:	python-devel >= 1.5.2
 BuildRequires:	openssl-devel >= 0.9.6
-BuildRequires:	swig 
+BuildRequires:	swig
 BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -22,7 +22,7 @@ M2Crypto makes accessible to the Python programmer the following:
 - SSL functionality to implement clients and servers.
 - S/MIME v2.
 
-M2Crypto is released under a very liberal BSD-style licence. See 
+M2Crypto is released under a very liberal BSD-style licence. See
 LICENCE for details.
 
 %description -l pl
@@ -52,5 +52,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.html demo 
+%doc *.gz doc/*.html demo
 %{py_sitedir}/M2Crypto
