@@ -10,7 +10,7 @@ Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
 # Source0-md5:	c018c94e00b33aac969fbbe02b244aba
 Patch0:		M2Crypto-smime_callback.patch
 Patch1:		M2Crypto-pkcs7_get0_signers.patch
-URL:		http://www.pobox.org.sg/home/ngps/m2/
+URL:		http://sandbox.rulemaker.net/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
 BuildRequires:	python-devel >= 2.2.1
