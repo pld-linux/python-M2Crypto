@@ -7,8 +7,6 @@ License:	BSD-style
 Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
 URL:		http://www.pobox.org.sg/home/ngps/m2/
 Group:		Development/Languages/Python
-Group(de):	Entwicklung/Sprachen/Python
-Group(pl):	Programowanie/Jêzyki/Python
 %requires_eq	python
 BuildRequires:	python-devel >= 1.5.2
 BuildRequires:	openssl-devel >= 0.9.6
