@@ -1,0 +1,11 @@
+--- m2crypto-0.13/setup.py.orig	2004-12-27 17:35:06.681474488 +0100
++++ m2crypto-0.13/setup.py	2004-12-27 17:35:17.183877880 +0100
+@@ -14,7 +14,7 @@
+ 
+ # This copy of swig_sources is from Python 2.2.
+ 
+-def swig_sources (self, sources):
++def swig_sources (self, sources, extension=None):
+ 
+     """Walk the list of source files in 'sources', looking for SWIG
+     interface (.i) files.  Run SWIG on all that are found, and
