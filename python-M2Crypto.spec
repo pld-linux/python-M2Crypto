@@ -42,6 +42,7 @@ cd M2Crypto
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{python_sitedir}
+
 find M2Crypto -name \*.py | xargs -r rm -f
 cp -a M2Crypto $RPM_BUILD_ROOT%{python_sitedir}
 
