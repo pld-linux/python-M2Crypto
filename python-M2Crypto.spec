@@ -3,13 +3,11 @@
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.11
-Release:	2
+Version:	0.12
+Release:	1
 License:	BSD-like
-Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
-# Source0-md5:	c018c94e00b33aac969fbbe02b244aba
-Patch0:		M2Crypto-smime_callback.patch
-Patch1:		M2Crypto-pkcs7_get0_signers.patch
+Source0:	http://sandbox.rulemaker.net/ngps/Dist/m2crypto-%{version}.zip
+# Source0-md5:	4e93a071e3abbf2bb2177d52583c3e0f
 URL:		http://sandbox.rulemaker.net/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
@@ -36,12 +34,8 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 
 %prep
 %setup -q -n m2crypto-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
-# workaroud (no way to pass -ISWIG to swig invocation)
-cp SWIG/*.i SWIG/*.h .
 python setup.py build 
 
 %install
