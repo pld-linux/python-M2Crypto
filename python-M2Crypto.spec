@@ -1,4 +1,4 @@
-Summary:	A SOAP library for Python
+Summary:	Python interface to OpenSSL
 Name:		python-M2Crypto
 Version:	0.06
 Release:	1
@@ -10,6 +10,7 @@ Group(de):	Entwicklung/Sprachen/Python
 Group(pl):	Programowanie/Jêzyki/Python
 Requires:	python >= 1.5.2
 BuildRequires:	python-devel >= 1.5.2
+BuildRequires:	openssl-devel >= 0.9.6
 BuildRequires:	swig 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
