@@ -1,7 +1,8 @@
 Summary:	Python interface to OpenSSL
+Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.06
-Release:	1
+Release:	2
 License:	BSD-style
 Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
 URL:		http://www.pobox.org.sg/home/ngps/m2/
@@ -26,11 +27,17 @@ M2Crypto makes accessible to the Python programmer the following:
 M2Crypto is released under a very liberal BSD-style licence. See 
 LICENCE for details.
 
+%description -l pl
+M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
+- DH, RSA, DSA, szyfry symetryczne, skróty, HMAC
+- SSL do implementacji klientów i serwerów
+- S/MIME v2.
+
 %prep
 %setup -q -n m2crypto-%{version}
 
 %build
-make -C swig INCLUDE="-I. -I%{py_incdir}"
+%{__make} -C swig INCLUDE="-I. -I%{py_incdir}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
