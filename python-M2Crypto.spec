@@ -11,7 +11,7 @@ URL:		http://www.pobox.org.sg/home/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
 BuildRequires:	python-devel >= 2.2.1
-BuildRequires:	openssl-devel >= 0.9.6
+BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	swig
 BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
