@@ -3,16 +3,17 @@
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.06
-Release:	2
+Version:	0.11
+Release:	1
 License:	BSD-like
 Source0:	http://www.pobox.org.sg/home/ngps/m2/m2crypto-%{version}.zip
+# Source0-md5:	c018c94e00b33aac969fbbe02b244aba
 URL:		http://www.pobox.org.sg/home/ngps/m2/
 Group:		Development/Languages/Python
 %pyrequires_eq	python
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	openssl-devel >= 0.9.7
-BuildRequires:	swig
+BuildRequires:	swig >= 1.3.17
 BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,20 +36,31 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 %setup -q -n m2crypto-%{version}
 
 %build
-%{__make} -C swig INCLUDE="-I. -I%{py_incdir}"
+# workaroud (no way to pass -ISWIG to swig invocation)
+cp SWIG/*.i SWIG/*.h .
+python setup.py build 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{py_sitedir}
 
-cp -a M2Crypto $RPM_BUILD_ROOT%{py_sitedir}
-%{py_comp} $RPM_BUILD_ROOT%{py_sitedir}
-%{py_ocomp} $RPM_BUILD_ROOT%{py_sitedir}
+python setup.py install \
+	--root=$RPM_BUILD_ROOT \
+	--optimize=2
 
+# shutup check-files
+find $RPM_BUILD_ROOT/%{py_sitedir} -name \*.py \
+	-exec rm {} \;
+	
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc BUGS CHANGES INSTALL LICENCE README STORIES doc/*.html demo
-%{py_sitedir}/M2Crypto
+%attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
+%{py_sitedir}/M2Crypto/*.py[oc]
+%dir %{py_sitedir}/M2Crypto/SSL
+%{py_sitedir}/M2Crypto/SSL/*.py[oc]
+%dir %{py_sitedir}/M2Crypto/PGP
+%{py_sitedir}/M2Crypto/PGP/*.py[oc]
