@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
