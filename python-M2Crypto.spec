@@ -38,6 +38,8 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 %patch0 -p0
 %patch1 -p1
 
+find demo -type d -name CVS | xargs rm -rf
+
 %build
 python setup.py build 
 
@@ -50,7 +52,7 @@ python setup.py install \
 	--optimize=2
 
 # shutup check-files
-find $RPM_BUILD_ROOT/%{py_sitedir} -name \*.py \
+find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py \
 	-exec rm {} \;
 	
 %clean
