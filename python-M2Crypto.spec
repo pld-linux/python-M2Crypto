@@ -14,7 +14,9 @@ Group:		Development/Languages/Python
 %pyrequires_eq	python
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	openssl-devel >= 0.9.7d
-BuildRequires:	swig-python >= 1.3.25
+#BuildRequires:	swig-python >= 1.3.25
+BuildRequires:	swig >= 1.3.21
+BuildRequires:	swig < 1.3.24
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
