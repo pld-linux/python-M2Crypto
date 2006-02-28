@@ -9,14 +9,14 @@ Source0:	http://sandbox.rulemaker.net/ngps/Dist/m2crypto-%{version}.zip
 #		http://sandbox.rulemaker.net/ngps/Dist/0.13p1.patch
 Patch0:		%{name}-0.13p1.patch
 Patch1:		%{name}-swig_sources.patch
-URL:		http://sandbox.rulemaker.net/ngps/m2/
 Group:		Development/Languages/Python
+URL:		http://sandbox.rulemaker.net/ngps/m2/
 %pyrequires_eq	python
-BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	openssl-devel >= 0.9.7d
-#BuildRequires:	swig-python >= 1.3.25
-BuildRequires:	swig >= 1.3.21
+BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	swig < 1.3.24
+BuildRequires:	swig >= 1.3.21
+#BuildRequires:	swig-python >= 1.3.25
 BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 find demo -type d -name CVS | xargs rm -rf
 
 %build
-python setup.py build 
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -56,7 +56,7 @@ python setup.py install \
 # shutup check-files
 find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py \
 	-exec rm {} \;
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
