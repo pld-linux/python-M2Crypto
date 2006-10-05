@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES INSTALL LICENCE README doc/*.html demo
+%doc CHANGES LICENCE README doc/*.html demo
 %dir %{py_sitedir}/M2Crypto
 %attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
 %{py_sitedir}/M2Crypto/*.py[oc]
