@@ -1,20 +1,21 @@
+# NOTE: doesn't work properly (at least TLS in cjc) when built with recent swig
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.16
 Release:	2
 License:	BSD-like
+Group:		Development/Languages/Python
 Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}.tar.gz
 # Source0-md5:	6fc06583a2be56fc2a46872a0540d78e
 Patch0:		%{name}-swig_sources.patch
-Group:		Development/Languages/Python
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
-%pyrequires_eq	python
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 2.2.1
 BuildRequires:	swig >= 1.3.24
 #BuildRequires:	swig-python >= 1.3.25
 BuildRequires:	unzip
+%pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
