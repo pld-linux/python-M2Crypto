@@ -1,23 +1,21 @@
-
+# NOTE: doesn't work properly (at least TLS in cjc) when built with recent swig
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.13
-Release:	4
+Version:	0.16
+Release:	2
 License:	BSD-like
-Source0:	http://sandbox.rulemaker.net/ngps/Dist/m2crypto-%{version}.zip
-# Source0-md5:	be2790a34349ab452dddbcfe4c95606a
-#		http://sandbox.rulemaker.net/ngps/Dist/0.13p1.patch
-Patch0:		%{name}-0.13p1.patch
-Patch1:		%{name}-swig_sources.patch
-URL:		http://sandbox.rulemaker.net/ngps/m2/
 Group:		Development/Languages/Python
-%pyrequires_eq	python
-BuildRequires:	python-devel >= 2.2.1
+Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}.tar.gz
+# Source0-md5:	6fc06583a2be56fc2a46872a0540d78e
+Patch0:		%{name}-swig_sources.patch
+URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
-BuildRequires:	swig >= 1.3.17
-BuildRequires:	rpm-pythonprov
+BuildRequires:	python-devel >= 1:2.4
+BuildRequires:	swig >= 1.3.24
+BuildRequires:	swig-python >= 1.3.24
 BuildRequires:	unzip
+%pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,11 +35,12 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 
 %prep
 %setup -q -n m2crypto-%{version}
-%patch0 -p0
-%patch1 -p1
+%patch0 -p1
+
+find demo -type d -name CVS | xargs rm -rf
 
 %build
-python setup.py build 
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -52,15 +51,16 @@ python setup.py install \
 	--optimize=2
 
 # shutup check-files
-find $RPM_BUILD_ROOT/%{py_sitedir} -name \*.py \
+find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py \
 	-exec rm {} \;
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS CHANGES INSTALL LICENCE README doc/*.html demo
+%doc CHANGES LICENCE README doc/*.html demo
+%dir %{py_sitedir}/M2Crypto
 %attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
 %{py_sitedir}/M2Crypto/*.py[oc]
 %dir %{py_sitedir}/M2Crypto/SSL
