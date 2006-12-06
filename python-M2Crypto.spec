@@ -1,19 +1,19 @@
-# NOTE: doesn't work properly (at least TLS in cjc) when built with recent swig
 Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.16
-Release:	2
+Version:	0.17
+%define	bver	beta1
+Release:	0.%{bver}.2
 License:	BSD-like
 Group:		Development/Languages/Python
-Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}.tar.gz
-# Source0-md5:	6fc06583a2be56fc2a46872a0540d78e
+Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}%{bver}.tar.gz
+# Source0-md5:	da7da465e423adc44e46cc160dc1fa89
 Patch0:		%{name}-swig_sources.patch
+Patch1:		%{name}-store2ssl.patch
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 1:2.5
-BuildRequires:	swig >= 1.3.24
-#BuildRequires:	swig-python >= 1.3.25
+BuildRequires:	swig-python >= 1.3.24
 BuildRequires:	unzip
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,8 +34,9 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 - S/MIME v2.
 
 %prep
-%setup -q -n m2crypto-%{version}
+%setup -q -n m2crypto-%{version}%{bver}
 %patch0 -p1
+%patch1 -p1
 
 find demo -type d -name CVS | xargs rm -rf
 
