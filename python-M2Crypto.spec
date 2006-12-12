@@ -13,7 +13,7 @@ URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	swig >= 1.3.24
-#BuildRequires:	swig-python >= 1.3.25
+BuildRequires:	swig-python >= 1.3.24
 BuildRequires:	unzip
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
