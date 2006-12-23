@@ -2,12 +2,11 @@ Summary:	Python interface to OpenSSL
 Summary(pl):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.17
-%define	bver	beta1
-Release:	0.%{bver}.2
+Release:	1
 License:	BSD-like
 Group:		Development/Languages/Python
-Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}%{bver}.tar.gz
-# Source0-md5:	da7da465e423adc44e46cc160dc1fa89
+Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}.tar.gz
+# Source0-md5:	c67b45c752fd5e8115cd6b14831c5a38
 Patch0:		%{name}-swig_sources.patch
 Patch1:		%{name}-store2ssl.patch
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
@@ -34,7 +33,7 @@ M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
 - S/MIME v2.
 
 %prep
-%setup -q -n m2crypto-%{version}%{bver}
+%setup -q -n m2crypto-%{version}
 %patch0 -p1
 %patch1 -p1
 
