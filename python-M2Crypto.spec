@@ -1,5 +1,5 @@
 Summary:	Python interface to OpenSSL
-Summary(pl):	Interfejs Pythona do OpenSSL
+Summary(pl.UTF-8):   Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.17
 Release:	1
@@ -26,10 +26,10 @@ M2Crypto makes accessible to the Python programmer the following:
 M2Crypto is released under a very liberal BSD-like licence. See
 LICENCE for details.
 
-%description -l pl
-M2Crypto udostêpnia z poziomu Pythona nastêpuj±ce funkcje:
-- DH, RSA, DSA, szyfry symetryczne, skróty, HMAC
-- SSL do implementacji klientów i serwerów
+%description -l pl.UTF-8
+M2Crypto udostÄ™pnia z poziomu Pythona nastÄ™pujÄ…ce funkcje:
+- DH, RSA, DSA, szyfry symetryczne, skrÃ³ty, HMAC
+- SSL do implementacji klientÃ³w i serwerÃ³w
 - S/MIME v2.
 
 %prep
