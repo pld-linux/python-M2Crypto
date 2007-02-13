@@ -1,5 +1,5 @@
 Summary:	Python interface to OpenSSL
-Summary(pl.UTF-8):   Interfejs Pythona do OpenSSL
+Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.17
 Release:	1
