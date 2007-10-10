@@ -1,17 +1,19 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.17
+Version:	0.18.1
 Release:	1
 License:	BSD-like
-Group:		Development/Languages/Python
+Group:		Libraries/Python
 Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{version}.tar.gz
-# Source0-md5:	c67b45c752fd5e8115cd6b14831c5a38
+# Source0-md5:	84d8c7ad824bfac4b4f144d5790dfe02
 Patch0:		%{name}-swig_sources.patch
 Patch1:		%{name}-store2ssl.patch
+Patch2:		%{name}-py_ssize_t.patch
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	swig-python >= 1.3.24
 BuildRequires:	unzip
 %pyrequires_eq	python
@@ -36,6 +38,7 @@ M2Crypto udostępnia z poziomu Pythona następujące funkcje:
 %setup -q -n m2crypto-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 find demo -type d -name CVS | xargs rm -rf
 
@@ -44,22 +47,21 @@ python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{py_sitedir}
+install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
 
 python setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
 
-# shutup check-files
-find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py \
-	-exec rm {} \;
+%py_postclean
+cp -r demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES LICENCE README doc/*.html demo
+%doc CHANGES LICENCE README doc/*.html
 %dir %{py_sitedir}/M2Crypto
 %attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
 %{py_sitedir}/M2Crypto/*.py[oc]
@@ -68,3 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/M2Crypto/PGP
 %{py_sitedir}/M2Crypto/PGP/*.py[oc]
 %{py_sitedir}/M2Crypto-*.egg-info
+%dir %{_examplesdir}/%{name}-%{version}
+%{_examplesdir}/%{name}-%{version}/*
