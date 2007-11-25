@@ -10,6 +10,7 @@ Source0:	http://wiki.osafoundation.org/pub/Projects/MeTooCrypto/m2crypto-%{versi
 Patch0:		%{name}-swig_sources.patch
 Patch1:		%{name}-store2ssl.patch
 Patch2:		%{name}-py_ssize_t.patch
+Patch3:		%{name}-swig.patch
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 1:2.5
@@ -39,6 +40,7 @@ M2Crypto udostępnia z poziomu Pythona następujące funkcje:
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 find demo -type d -name CVS | xargs rm -rf
 
