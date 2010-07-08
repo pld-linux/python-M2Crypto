@@ -2,7 +2,7 @@ Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.20.2
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
