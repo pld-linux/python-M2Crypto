@@ -1,16 +1,15 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.20.2
-Release:	4
+Version:	0.21.1
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-# Source0-md5:	6c24410410d6eb1920ea43f77a93613a
+# Source0-md5:	f93d8462ff7646397a9f77a2fe602d17
 Patch0:		%{name}-swig_sources.patch
 Patch1:		%{name}-store2ssl.patch
 Patch2:		%{name}-swig.patch
-Patch3:		%{name}-openssl.patch
 URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	python-devel >= 1:2.5
@@ -42,18 +41,17 @@ M2Crypto udostępnia z poziomu Pythona następujące funkcje:
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p0
 
 find demo -type d -name CVS | xargs rm -rf
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
 
-python setup.py install \
+%{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
 
@@ -74,5 +72,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/M2Crypto/PGP
 %{py_sitedir}/M2Crypto/PGP/*.py[oc]
 %{py_sitedir}/M2Crypto-*.egg-info
-%dir %{_examplesdir}/%{name}-%{version}
-%{_examplesdir}/%{name}-%{version}/*
+%{_examplesdir}/%{name}-%{version}
