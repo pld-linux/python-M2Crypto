@@ -1,22 +1,21 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.21.1
+Version:	0.22.3
 Release:	1
 License:	BSD-like
 Group:		Libraries/Python
-Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-# Source0-md5:	f93d8462ff7646397a9f77a2fe602d17
-Patch0:		%{name}-swig_sources.patch
-Patch1:		%{name}-store2ssl.patch
-Patch2:		%{name}-swig.patch
-URL:		http://wiki.osafoundation.org/bin/view/Projects/MeTooCrypto
-BuildRequires:	openssl-devel >= 0.9.7d
-BuildRequires:	python-devel >= 1:2.5
+Source0:	https://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
+# Source0-md5:	573f21aaac7d5c9549798e72ffcefedd
+Patch0:		%{name}-store2ssl.patch
+Patch1:		%{name}-swig.patch
+URL:		http://chandlerproject.org/bin/view/Projects/MeTooCrypto
+BuildRequires:	openssl-devel >= 0.9.8
+BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
-BuildRequires:	swig-python >= 1.3.24
+BuildRequires:	swig-python >= 2.0
 BuildRequires:	unzip
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,9 +39,6 @@ M2Crypto udostępnia z poziomu Pythona następujące funkcje:
 %setup -q -n M2Crypto-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-
-find demo -type d -name CVS | xargs rm -rf
 
 %build
 %{__python} setup.py build
@@ -56,20 +52,16 @@ install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
 	--optimize=2
 
 %py_postclean
-cp -r demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES LICENCE README doc/*.html
+%doc README
 %dir %{py_sitedir}/M2Crypto
 %attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
-%{py_sitedir}/M2Crypto/*.py[oc]
+%{py_sitedir}/M2Crypto/*.py[co]
 %dir %{py_sitedir}/M2Crypto/SSL
-%{py_sitedir}/M2Crypto/SSL/*.py[oc]
-%dir %{py_sitedir}/M2Crypto/PGP
-%{py_sitedir}/M2Crypto/PGP/*.py[oc]
+%{py_sitedir}/M2Crypto/SSL/*.py[co]
 %{py_sitedir}/M2Crypto-*.egg-info
-%{_examplesdir}/%{name}-%{version}
