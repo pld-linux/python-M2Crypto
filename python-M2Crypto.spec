@@ -14,7 +14,7 @@ BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	swig-python >= 2.0
 BuildRequires:	unzip
 %pyrequires_eq	python
