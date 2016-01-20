@@ -1,15 +1,15 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.22.3
-Release:	3
+Version:	0.22.5
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	https://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-# Source0-md5:	573f21aaac7d5c9549798e72ffcefedd
+# Source0-md5:	f84eb07aa1687f39bc26ee7b1ba5a105
 Patch0:		%{name}-store2ssl.patch
 Patch1:		%{name}-swig.patch
-URL:		http://chandlerproject.org/bin/view/Projects/MeTooCrypto
+URL:		https://gitlab.com/m2crypto/m2crypto
 BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-modules
@@ -60,6 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/M2Crypto
 %attr(755,root,root) %{py_sitedir}/M2Crypto/*.so
 %{py_sitedir}/M2Crypto/*.py[co]
+%dir %{py_sitedir}/M2Crypto/PGP
+%{py_sitedir}/M2Crypto/PGP/*.py[co]
 %dir %{py_sitedir}/M2Crypto/SSL
 %{py_sitedir}/M2Crypto/SSL/*.py[co]
 %{py_sitedir}/M2Crypto-*.egg-info
