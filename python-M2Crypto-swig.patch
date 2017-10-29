@@ -31,12 +31,12 @@
              XN_FLAG_DUMP_UNKNOWN_FIELDS);
  
  /* Cribbed from rsa.h. */
---- m2crypto-0.18.1/SWIG/_asn1.i.orig	2007-05-09 00:21:51.000000000 +0200
-+++ m2crypto-0.18.1/SWIG/_asn1.i	2007-11-25 21:43:56.039258137 +0100
-@@ -95,11 +95,11 @@
- %constant int ASN1_STRFLGS_UTF8_CONVERT = 0x10;
+--- M2Crypto-0.27.0/SWIG/_asn1.i~	2017-10-05 22:43:17.000000000 +0200
++++ M2Crypto-0.27.0/SWIG/_asn1.i	2017-10-29 10:43:11.639300285 +0100
+@@ -107,11 +107,11 @@ extern int ASN1_INTEGER_cmp(ASN1_INTEGER
  %constant int ASN1_STRFLGS_DUMP_UNKNOWN = 0x100;
  %constant int ASN1_STRFLGS_DUMP_DER = 0x200;
+ 
 -%constant int ASN1_STRFLGS_RFC2253 = (ASN1_STRFLGS_ESC_2253 | \
 -                ASN1_STRFLGS_ESC_CTRL | \
 -                ASN1_STRFLGS_ESC_MSB | \
@@ -50,3 +50,4 @@
                  ASN1_STRFLGS_DUMP_DER);
  
  %inline %{
+
