@@ -10,15 +10,13 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.30.1
-Release:	5
+Version:	0.38.0
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/m2crypto/
 Source0:	https://pypi.debian.net/M2Crypto/M2Crypto-%{version}.tar.gz
-# Source0-md5:	7fce3cbf85eb84a669682892b935746b
-Patch0:		%{name}-store2ssl.patch
-Patch1:		%{name}-swig.patch
+# Source0-md5:	8f39bfac730b6567e0c2179d15318c60
 URL:		https://gitlab.com/m2crypto/m2crypto
 BuildRequires:	openssl-devel >= 1.0.1e
 %if %{with python2}
@@ -85,8 +83,6 @@ pliku LICENCE.
 
 %prep
 %setup -q -n M2Crypto-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %if %{with python2}
