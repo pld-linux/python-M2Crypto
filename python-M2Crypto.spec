@@ -20,21 +20,20 @@ Source0:	https://pypi.debian.net/M2Crypto/M2Crypto-%{version}.tar.gz
 URL:		https://gitlab.com/m2crypto/m2crypto
 BuildRequires:	openssl-devel >= 1.0.1e
 %if %{with python2}
-BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	python3-devel >= 1:3.5
+BuildRequires:	python3-modules >= 1:3.5
 BuildRequires:	python3-setuptools
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.710
-BuildRequires:	swig-python >= 2.0
-BuildRequires:	unzip
+BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	swig-python >= 2.0.10
 Requires:	openssl >= 1.0.1e
-Requires:	python-libs
+Requires:	python-modules >= 1:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,9 +58,8 @@ pliku LICENCE.
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Group:		Libraries/Python
-Requires:	openssl >= 1.0.1
-Requires:	python3-libs
-Requires:	python3-modules
+Requires:	openssl >= 1.0.1e
+Requires:	python3-modules >= 1:3.5
 
 %description -n python3-%{module}
 M2Crypto makes accessible to the Python programmer the following:
@@ -81,6 +79,17 @@ M2Crypto udostępnia z poziomu Pythona następujące funkcje:
 M2Crypto jest wydane na bardzo liberalnej licencji BSD - szczegóły w
 pliku LICENCE.
 
+%package apidocs
+Summary:	API documentation for Python M2Crypto module
+Summary(pl.UTF-8):	Dokumentacja API modułu Pythona M2Crypto
+Group:		Documentation
+
+%description apidocs
+API documentation for Python M2Crypto module.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API modułu Pythona M2Crypto.
+
 %prep
 %setup -q -n M2Crypto-%{version}
 
@@ -98,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with python2}
 %py_install
+
 %py_postclean
 %endif
 
@@ -134,3 +144,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/%{module}-%{version}-py*.egg-info
 %endif
 
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/html/{_modules,_static,*.html,*.js}
