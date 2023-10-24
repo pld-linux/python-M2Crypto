@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_with	tests	# test target [fails, some files are missing]
-%bcond_without	doc	# don't build doc
+%bcond_with	tests	# test target [two Y2K38 tests fail]
+%bcond_without	doc	# documentation
 %bcond_without	python2	# CPython 2.x module
 %bcond_without	python3	# CPython 3.x module
 
@@ -10,13 +10,13 @@
 Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
-Version:	0.38.0
-Release:	4
+Version:	0.40.0
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/m2crypto/
-Source0:	https://pypi.debian.net/M2Crypto/M2Crypto-%{version}.tar.gz
-# Source0-md5:	8f39bfac730b6567e0c2179d15318c60
+#Source0Download: https://pypi.org/simple/m2crypto/
+Source0:	https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
+# Source0-md5:	e35c893842d245cdee2a1a08b7ac23ec
 URL:		https://gitlab.com/m2crypto/m2crypto
 BuildRequires:	openssl-devel >= 1.0.1e
 %if %{with python2}
@@ -31,7 +31,7 @@ BuildRequires:	python3-setuptools
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-BuildRequires:	swig-python >= 2.0.10
+BuildRequires:	swig-python >= 4.0
 Requires:	openssl >= 1.0.1e
 Requires:	python-modules >= 1:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
