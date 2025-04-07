@@ -11,12 +11,13 @@ Summary:	Python interface to OpenSSL
 Summary(pl.UTF-8):	Interfejs Pythona do OpenSSL
 Name:		python-M2Crypto
 Version:	0.40.1
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/m2crypto/
 Source0:	https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 # Source0-md5:	280c20072afbe7010cf9e9620ea25c7b
+Patch0:		build.patch
 URL:		https://gitlab.com/m2crypto/m2crypto
 BuildRequires:	openssl-devel >= 1.0.1e
 %if %{with python2}
@@ -92,6 +93,7 @@ Dokumentacja API modułu Pythona M2Crypto.
 
 %prep
 %setup -q -n M2Crypto-%{version}
+%patch -P0 -p1
 
 # test_verify_with_static_callback has some problems with multiple calls to SMIME.verify() with openssl 3.2.0
 %{__sed} -i -e '/    def test_verify_with_static_callback/ i\
